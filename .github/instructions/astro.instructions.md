@@ -102,6 +102,28 @@ const game = await getGameById(getDatabase(), Number(id));
 - Import `getDatabase()` from `src/lib/db.ts` and the typed helpers from `src/lib/games.ts`.
 - The database must be migrated and seeded before `astro build`; the `prebuild` npm script (`db:setup`) handles this.
 
+## Component Contracts and Props Documentation
+
+- Every reusable component that accepts props should define a `Props` interface in frontmatter and document the contract in a way that explains the component's API.
+- Document the purpose of each prop, especially when the prop is not obvious from its name or when it drives rendering decisions, conditional logic, or layout structure.
+- Treat a missing or stale `Props` description as part of the component contract problem: update the interface and documentation together when the contract changes.
+
+Example:
+
+```astro
+---
+interface Props {
+  /** Page title shown in the main layout header. */
+  title: string;
+
+  /** Games to render on the page, already ordered in the desired display sequence. */
+  games: Game[];
+}
+
+const { title, games } = Astro.props;
+---
+```
+
 ## Client Interactivity (rare)
 
 There is no Svelte/React layer. When a page genuinely needs client behaviour, add a scoped Astro `<script>` using standard DOM APIs. Prefer native interactive elements (`<button>`, `<a href>`) so keyboard and focus behaviour come for free.

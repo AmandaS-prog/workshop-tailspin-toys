@@ -51,6 +51,20 @@ Refer to technology-specific instruction files:
 - Use props for configuration, not duplication
 - Document component APIs with TypeScript types
 
+## Comments and Documentation Standards
+
+- Comments should explain intent, trade-offs, constraints, and business logic — not what the code is already doing in plain English.
+- Prefer a brief comment above a non-obvious branch, workaround, or assumption: `why` this exists, `why` a particular approach was chosen, and `why` the code is shaped this way.
+- Remove stale or repetitive comments in the same change that updates the related code. A comment that paraphrases the function body is a maintenance bug.
+- Public component and data-layer APIs must be self-documenting. When a reusable `.astro` component or exported helper exposes a contract, document the purpose, inputs, and outputs with typed signatures or JSDoc/TSDoc.
+
+## TypeScript Formatting and Linting
+
+- Use explicit TypeScript types for function parameters and return values, especially in `db/` and `src/lib/`.
+- Keep the codebase readable and consistent with the existing conventions already in the repo: semicolons, single quotes in TS/JS files, and a clear, 4-space indentation pattern.
+- Prefer small, focused interfaces and type aliases that communicate intent; avoid `any` unless a wider type is impossible to express.
+- The repo already runs `@eslint/js` and `typescript-eslint` via `eslint.config.js`; keep new code aligned with those rules and do not disable lint checks for formatting-only concerns when the rule can be satisfied by code cleanup.
+
 ## Development Workflow
 
 1. **Choose the right tool**: 

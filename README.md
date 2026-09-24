@@ -12,6 +12,19 @@ Tailspin Toys is a crowdfunding platform for games with a developer theme. The p
 
 The database is migrated and seeded automatically before `dev`/`build` (via the `predev`/`prebuild` npm scripts) and is written to the gitignored `tailspin.db` file.
 
+## Coding standards
+
+Project standards live in the `.github/instructions/` directory and are intended to keep the codebase consistent for contributors and Copilot. The guiding rule is simple: document intent and decisions, not the mechanics the code already makes obvious.
+
+The current standards include:
+
+- Commenting guidance for `why` over `what`, with stale or restating comments treated as bugs to fix or remove.
+- JSDoc/TSDoc requirements for exported functions in `db/**/*.ts` and `src/lib/*.ts`, including parameter and return documentation.
+- `Props` docs for reusable Astro components so the public component API stays self-explanatory.
+- TypeScript styling expectations and linting guardrails via ESLint (`@eslint/js` + `typescript-eslint`).
+
+See [`.github/instructions/ui.instructions.md`](.github/instructions/ui.instructions.md), [`.github/instructions/astro.instructions.md`](.github/instructions/astro.instructions.md), and [`.github/instructions/drizzle.instructions.md`](.github/instructions/drizzle.instructions.md) for the full guidance.
+
 ## Using this template
 
 This repository is a GitHub template. When you create a new repository from it, a one-time **Bootstrap template issues** workflow (`.github/workflows/bootstrap-issues.yml`) runs automatically on the first push to `main` and opens a set of starter issues describing suggested first features. Each issue is defined by a Markdown file in `.github/bootstrap-issues/` — the first heading becomes the issue title and the remaining content becomes the body — so you can edit, add, or remove files there to control which issues are created.
